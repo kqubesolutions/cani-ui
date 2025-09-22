@@ -46,13 +46,13 @@ function App() {
     setResults(null);
     try {
       const response = await fetch(
-        "http://localhost:9876/api/openai?q=" +  encodeURIComponent(search)
+        "http://localhost:9876/api/openai?q=" + encodeURIComponent(search)
       );
       if (!response.ok) {
         throw new Error(`API error: ${response.status}`);
       }
       const data = await response.json();
-      setResults(data);
+      setResults(data); // expects an array of {title, description}
     } catch (err) {
       setError(err.message);
     } finally {
@@ -76,7 +76,8 @@ function App() {
     <div className="app-container">
       <Sidebar />
       <main className="main-content">
-        <h1 className="title">What CaNi do for you?</h1>
+        <h1 className="title">What CaNi do for you?
+        </h1>
         <form className="search-form" onSubmit={handleSearch}>
           <input
             className="search-input"

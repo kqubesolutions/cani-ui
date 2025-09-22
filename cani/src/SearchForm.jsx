@@ -16,6 +16,13 @@ const SearchForm = ({ results }) => {
 
   const goToPage = (page) => {
     if (page >= 1 && page <= totalPages) {
+
+
+
+
+
+
+      
       setCurrentPage(page);
     }
   };
